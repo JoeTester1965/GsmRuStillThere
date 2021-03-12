@@ -35,13 +35,13 @@ Get the averge ppm (frequency deviation) for your dongle to help the scripts bel
 rtl_test -p
 ```
 
-Find candidate stations, and put them in a file for processing, will take a few minutes
+Find downlinks and put them in a file for processing, will take a few minutes.
 
 ```console
 grgsm_scanner -g 40 -s 2000000 -b GSM900 -p ppm > towers.txt
 ```
 
-Using towers found above, create a shell script that will process them, --args are for a networked receiver
+Using downlinks found above, create a shell script that will process them. --args are for a networked receiver.
 
 ```console
 python3 ./process-scanner-output.py towers.txt ppm --args=rtl_tcp=a.b.c.d:1234 > start.sh
