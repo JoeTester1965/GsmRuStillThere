@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import sys
 import csv
 import sqlite3
@@ -30,19 +28,22 @@ def main():
                 if line_count == 0:
                     line_count += 1
                 else:
-                    timestamp = row[1]
-                    mcc = row[0][0:3]
-                    mnc = row[0][3:5]  
-                    msin = hashlib.sha256(row[0][5:].encode('utf-8') + salt).hexdigest()[-10:]
-                    datetime = parse(timestamp)
-                    cursor = conn.cursor()
-                    cursor.execute('select distinct country,network from mccmnc where mcc=? and mnc=?', (mcc, mnc))
-                    records=cursor.fetchall()
-                    if len(records) > 0:
-                        country=records[0][0]
-                        network=records[0][1]
-                        print(f'{datetime},{msin},{mcc},{mnc},{country},{network}')
-                    line_count += 1
+                    try:
+                        timestamp = row[1]
+                        mcc = row[0][0:3]
+                        mnc = row[0][3:5]  
+                        msin = hashlib.sha256(row[0][5:].encode('utf-8') + salt).hexdigest()[-10:]
+                        datetime = parse(timestamp)
+                        cursor = conn.cursor()
+                        cursor.execute('select distinct country,network from mccmnc where mcc=? and mnc=?', (mcc, mnc))
+                        records=cursor.fetchall()
+                        if len(records) > 0:
+                            country=records[0][0]
+                            network=records[0][1]
+                            print(f'{datetime},{msin},{mcc},{mnc},{country},{network}')
+                        line_count += 1
+                    except:
+                        pass
             
 if __name__ == '__main__':
     main()
