@@ -23,7 +23,7 @@ IMHO that includes IP addresses as well, but that is another story.
 ## Setup
 
 ```console
-python3 make-mcc-mnc-db.py ./mcc-mnc-table.csv mcc-mnc.db
+python3 make-mcc-mnc-db.py mcc-mnc-table.csv mcc-mnc.db
 ```
 
 
@@ -64,7 +64,7 @@ sudo bash ./stop.sh
 ## Results
 
 ```console
-python3 ./imsi.py ./imsi.csv ./mcc-mnc.db > salted-and-hashed-records.csv
+python3 imsi.py imsi.csv mcc-mnc.db > salted-and-hashed-records.csv
 
 rm imsi.csv
 
