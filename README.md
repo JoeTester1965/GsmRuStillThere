@@ -10,7 +10,7 @@ IMHO that includes IP addresses as well, but that is another story.
 
 ## Dependancies
 
-[rtl_sdr](https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr)
+[rtl_sdr](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
 
 [gr-gsm](https://osmocom.org/projects/gr-gsm/wiki/Installation)
 
