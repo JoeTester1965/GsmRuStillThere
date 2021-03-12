@@ -4,47 +4,42 @@ Uses a  cheap and cheerful [RTL SDR](https://www.rtl-sdr.com/about-rtl-sdr/) to 
 
 Be aware of any legislation regards both passive capture, and the processing, of radio signals where you are.
 
-Be a good citizen and always properly anonymise and/or delete any PII https://en.wikipedia.org/wiki/PII stumbled upon doing network research.
+Be a good citizen and always properly anonymise and/or delete any [Personally Identifiable Information](https://en.wikipedia.org/wiki/PII) stumbled upon doing network research.
 
 IMHO that includes IP addresses as well, but that is another story.
 
 ## Dependancies
 
-rtl_sdr
+[rtl_sdr](https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr)
 
 [gr-gsm](https://osmocom.org/projects/gr-gsm/wiki/Installation)
 
-python3-matplotlib
-
-python3-pandas
-
 [mcc-mnc table](https://raw.githubusercontent.com/musalbas/mcc-mnc-table/master/mcc-mnc-table.csv)
+
+[python3-matplotlib](https://matplotlib.org/stable/faq/installing_faq.html)
+
+[python3-pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 
 ## Setup
 
+```console
 python3 make-mcc-mnc-db.py ./mcc-mnc-table.csv mcc-mnc.db
+```
 
 
 ## Survey
 
-#
-# Get the averge ppm (frequency deviation) for your dongle to help grgsm_scanner etc lock on:
-#
+Get the averge ppm (frequency deviation) for your dongle to help the scripts below (i.e. replace ppm with an iteger value). Using 0 should work most of the time if your RTL dongle is a decent one.
 
 ```console
 rtl_test -p
 ```
 
-#
-# Find candidate stations, and put them in a file for processing, will take a few minutes
-#
+Find candidate stations, and put them in a file for processing, will take a few minutes
 
 grgsm_scanner -g 40 -s 2000000 -b GSM900 -p ppm > towers.txt
 
-
-#
-# Using towers found above, create a shell script that will process them, --args are for a networked receiver
-#
+Using towers found above, create a shell script that will process them, --args are for a networked receiver
 
 ```console
 python3 ./process-scanner-output.py towers.txt ppm --args=rtl_tcp=a.b.c.d:1234 > start.sh
