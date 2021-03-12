@@ -4,7 +4,7 @@ Uses a  cheap and cheerful [RTL SDR](https://www.rtl-sdr.com/about-rtl-sdr/) to 
 
 Be aware of any legislation regards both passive capture, and the processing, of radio signals where you are.
 
-Be a good citizen and always properly anonymise and/or delete any [Personally Identifiable Information](https://en.wikipedia.org/wiki/PII) stumbled upon doing network research.
+Be a good citizen and always properly anonymise and/or delete any [Personally Identifiable Information](https://en.wikipedia.org/wiki/Personal_data) stumbled upon doing network research.
 
 IMHO that includes IP addresses as well, but that is another story.
 
@@ -37,7 +37,9 @@ rtl_test -p
 
 Find candidate stations, and put them in a file for processing, will take a few minutes
 
+```console
 grgsm_scanner -g 40 -s 2000000 -b GSM900 -p ppm > towers.txt
+```
 
 Using towers found above, create a shell script that will process them, --args are for a networked receiver
 
