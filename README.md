@@ -29,7 +29,7 @@ python3 make-mcc-mnc-db.py mcc-mnc-table.csv mcc-mnc.db
 
 ## Survey
 
-Get the averge ppm (frequency deviation) for your dongle to help the scripts below (i.e. replace ppm with a numeric value). Using 0 should work most of the time if your RTL dongle is a decent one.
+Get the averge ppm (frequency deviation) for your dongle to help the scripts below (i.e. replace {your ppm} below with the numeric value you get here). Using 0 should work most of the time if your RTL dongle is a decent one.
 
 ```console
 rtl_test -p
