@@ -31,10 +31,14 @@ python3 make-mcc-mnc-db.py mcc-mnc-table.csv mcc-mnc.db
 
 ## Survey
 
-Two scans are made, one to get the RTL error offset and the next the GSM base stations proper. This script makes start.sh.
+Two scans are made, one to get the RTL error offset and the next the GSM base stations proper. 
+
+This script makes start.sh.
+
+If you want to use networked or multiple receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
 
 ```console
-.\survey.sh
+./survey.sh
 ```
 
 ## Scan
@@ -42,7 +46,7 @@ Two scans are made, one to get the RTL error offset and the next the GSM base st
 to start (--args are optional and for a networked receiver):
 
 ```console
-sudo bash ./start.sh --args=rtl_tcp=a.b.c.d:1234
+sudo bash ./start.sh
 ```
 
 to stop:
