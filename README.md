@@ -38,7 +38,7 @@ This script makes start.sh.
 If you want to use networked or multiple receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
 
 ```console
-./survey.sh
+bash ./survey.sh
 ```
 
 ## Scan
