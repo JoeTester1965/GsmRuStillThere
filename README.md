@@ -34,7 +34,7 @@ Get the averge ppm (frequency deviation) for your dongle to help the scripts bel
 ```console
 rtl_test -p
 ```
-Alternatively use [kalibrate-rtl](http://314256.blogspot.com/2015/03/how-to-use-kal-software-to-workout-ppm.html) to find the ppm
+Alternatively use [kalibrate-rtl](http://314256.blogspot.com/2015/03/how-to-use-kal-software-to-workout-ppm.html) to find the ppm.
 
 Find downlinks and put them in a file for processing, will take a few minutes.
 
