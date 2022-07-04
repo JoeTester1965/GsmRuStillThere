@@ -20,6 +20,8 @@ IMHO that includes IP addresses as well, but that is another story.
 
 [python3-pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 
+[tshark](https://tshark.dev/setup/install/)
+
 ## Setup
 
 ```console
