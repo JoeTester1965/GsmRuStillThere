@@ -36,16 +36,16 @@ rtl_test -p
 ```
 Alternatively use [kalibrate-rtl](http://314256.blogspot.com/2015/03/how-to-use-kal-software-to-workout-ppm.html) to find the ppm.
 
-Find downlinks and put them in a file for processing, will take a few minutes.
+Find downlinks and put them in a file for processing, will take a few minutes:
 
 ```console
-grgsm_scanner -g 40 -s 2000000 -b GSM900 -p ppm > towers.txt
+grgsm_scanner -g 40 -s 2000000 -b GSM900 -p {your ppm} > towers.txt
 ```
 
 Using downlinks found above, create a shell script that will process them. --args are optional and for a networked receiver.
 
 ```console
-python3 ./process-scanner-output.py towers.txt ppm --args=rtl_tcp=a.b.c.d:1234 > start.sh
+python3 ./process-scanner-output.py towers.txt {your ppm} --args=rtl_tcp=a.b.c.d:1234 > start.sh
 ```
 
 ## Scan
