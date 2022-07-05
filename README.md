@@ -20,6 +20,8 @@ IMHO that includes IP addresses as well, but that is another story.
 
 [python3-pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 
+[tshark](https://tshark.dev/setup/install/)
+
 ## Setup
 
 ```console
@@ -29,27 +31,19 @@ python3 make-mcc-mnc-db.py mcc-mnc-table.csv mcc-mnc.db
 
 ## Survey
 
-Get the averge ppm (frequency deviation) for your dongle to help the scripts below (i.e. replace ppm with a numeric value). Using 0 should work most of the time if your RTL dongle is a decent one.
+Two scans are made, one to get the RTL error offset and the next the GSM base stations proper. 
+
+This script makes start.sh.
+
+If you want to use networked or multiple receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
 
 ```console
-rtl_test -p
-```
-
-Find downlinks and put them in a file for processing, will take a few minutes.
-
-```console
-grgsm_scanner -g 40 -s 2000000 -b GSM900 -p ppm > towers.txt
-```
-
-Using downlinks found above, create a shell script that will process them. --args are optional and for a networked receiver.
-
-```console
-python3 ./process-scanner-output.py towers.txt ppm --args=rtl_tcp=a.b.c.d:1234 > start.sh
+bash ./survey.sh
 ```
 
 ## Scan
 
-to start:
+to start (--args are optional and for a networked receiver):
 
 ```console
 sudo bash ./start.sh
