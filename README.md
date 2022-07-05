@@ -22,6 +22,8 @@ IMHO that includes IP addresses as well, but that is another story.
 
 [tshark](https://tshark.dev/setup/install/)
 
+[kalibrate-rtl](https://github.com/steve-m/kalibrate-rtl)   There are also ubuntu repos out there and specific intrsuctions for installing on a Pi.
+
 ## Setup
 
 ```console
