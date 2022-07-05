@@ -39,11 +39,11 @@ This script then creates *start.sh* to allow capture of IMSI data.
 ```console
 bash ./survey.sh
 ```
-Note: A **gain** value of **40** in *survey.sh* worked best for me, you may need to change this. With this value, for me, rx power as indicated by the output file *scan.txt* needed to be greater than **100000** for consistent decoding. You may need to edit **power_threshold** in *survey.sh* to be either larger or smaller to reflect your environment. Alternativly if you are comfortable with bash scripts, run with a small power threshold then edit *start.sh* manually after it has been created by *survey.sh*.
+Note: A **gain** value of **40** in *survey.sh* worked best for me, you may need to change this. With this value, for me, rx power as indicated by the output file *scan.txt* needed to be greater than **100000** for consistent decoding. You may need to edit **power_threshold** in *survey.sh* to be either larger or smaller to reflect your environment. Alternatively if you are comfortable with bash scripts, run with a small power threshold then edit *start.sh* manually after it has been created by *survey.sh*.
 
 ## Scan
 
-This script loops through all found base stations gathering IMSI data from each one for 5 minutes into *imsi.csv*.
+This script loops through all found base stations gathering IMSI data from each one for 5 minutes into *imsi.csv*. Root user is needed for tshark hence sudo. 
 
 ```console
 sudo bash ./start.sh
