@@ -44,7 +44,7 @@ bash ./survey.sh
 
 ## Scan
 
-Note: If you want to use networked or multiple receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
+Note: If you want to use networked receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
 
 To start collecting IMSIs (will be put into imsi.csv):
 
