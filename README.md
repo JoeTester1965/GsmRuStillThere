@@ -6,7 +6,7 @@ Be aware of any legislation regards both passive capture, and the processing, of
 
 Be a good citizen and always properly anonymise and/or delete any [Personally Identifiable Information](https://en.wikipedia.org/wiki/Personal_data) stumbled upon doing network research.
 
-IMHO that includes IP addresses as well, but that is another story.
+A post-processing script is provided for that purpose.
 
 ## Dependancies
 
