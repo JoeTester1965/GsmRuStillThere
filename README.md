@@ -49,7 +49,7 @@ This script loops through all found base stations gathering IMSI data from each 
 sudo bash ./start.sh
 ```
 
-Note for advanced users: If you want to use a networked or specific USB RTL SDR receiver other than the default one edit *start.sh* and add **--args=rtl_tcp=a.b.c.d:1234** etc to the **grgsm_livemon_headless** command lines as approporiate.
+Note for advanced users: If you want to use a networked or specific USB RTL SDR receiver other than the default one edit *start.sh* and add **--args=rtl_tcp=a.b.c.d:1234** etc to the **grgsm_livemon_headless** command lines as appropriate.
 
 To stop collecting press Control-C then:
 
@@ -59,7 +59,7 @@ sudo bash ./stop.sh
 
 ## Processing
 
-Run the following to anoymise the IMSI data collected and produce visualisations like the examples below:
+Run the following to anonymise the IMSI data collected and produce visualisations like the examples below:
 
 ```console
 bash ./process.sh
