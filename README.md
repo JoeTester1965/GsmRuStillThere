@@ -32,25 +32,24 @@ python3 make-mcc-mnc-db.py mcc-mnc-table.csv mcc-mnc.db
 
 ## Survey
 
-Two scans are made, one to get the RTL error offset and the next the GSM base stations proper. 
+Two scans are made, the first to get an accurate RTL error offset and the next the GSM base stations proper. 
 
-Note: This script creates start.sh used below.
-
-Note: A "gain" value of 40 in survey.sh worked best for me, you may need to change this. With this value, rx power as indicated by the output file scan.txt needed to be greater than 200000 for consistent decoding, you may need to edit "power_threshold" in survey.sh to reflect your environment as well.
+This script then creates *start.sh* to allow capture of IMSI data.
 
 ```console
 bash ./survey.sh
 ```
+Note: A **gain** value of **40** in *survey.sh* worked best for me, you may need to change this. With this value, for me, rx power as indicated by the output file *scan.txt* needed to be greater than **100000** for consistent decoding. You may need to edit **power_threshold** in *survey.sh* to be either larger or smaller to reflect your environment. Alternativly if you are comfortable with bash scripts, run with a small power threshold then edit *start.sh* manually after it has been created by *survey.sh*.
 
 ## Scan
 
-Note: If you want to use networked receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
-
-To start collecting IMSIs (will be put into imsi.csv):
+This script loops through all found base stations gathering IMSI data from each one for 5 minutes into *imsi.csv*.
 
 ```console
 sudo bash ./start.sh
 ```
+
+Note for advanced users: If you want to use a networked or specific USB RTL SDR receiver other than the default one edit *start.sh* and add **--args=rtl_tcp=a.b.c.d:1234** etc to the **grgsm_livemon_headless** command lines as approporiate.
 
 To stop collecting press Control-C then:
 
