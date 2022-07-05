@@ -5,12 +5,7 @@ with open(sys.argv[1]) as kal_input:
 
     ppm = sys.argv[2]
 
-    try: 
-        int(ppm)
-        pass
-    except ValueError:
-        print("ppm must be an integer when running " + sys.argv[0] + " ,see README")
-        raise SystemExit
+    power_threshold = sys.argv[3]
     
     print("#!/bin/bash")
     print("")
@@ -22,6 +17,9 @@ with open(sys.argv[1]) as kal_input:
     print("")
 
     print("bash ./stop.sh")
+    print("")
+
+    print("rm -f imsi.csv")
     print("")
 
     print("echo 'Control-C to stop looping round GSM channels'")
@@ -37,11 +35,13 @@ with open(sys.argv[1]) as kal_input:
     valid_stations = 0
     for line in kal_input:
         if "chan:" in line:
-            frequency=line.split("(")[1][0:8]
-            print("echo 'Processing " + frequency + "'")            
-            print(" grgsm_livemon_headless -p " + ppm + " -g 40 -s 2000000 -f " 
-                                + frequency + " > /dev/null 2>&1 < /dev/null &")
-            print(" sleep 300")
-            print(" pkill -f grgsm_livemon_headless")
+            frequency=line.split("(")[1][0:6]
+            power=line.split(":")[2].lstrip().rpartition('.')[0]
+            if (int(power) > int(power_threshold)):
+                print("echo 'Processing " + frequency + "'")            
+                print(" grgsm_livemon_headless -p " + ppm + " -g 40 -s 2000000 -f " 
+                                    + frequency + " > /dev/null 2>&1 < /dev/null &")
+                print(" sleep 600")
+                print(" pkill -f grgsm_livemon_headless")
 
     print("done")

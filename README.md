@@ -33,9 +33,9 @@ python3 make-mcc-mnc-db.py mcc-mnc-table.csv mcc-mnc.db
 
 Two scans are made, one to get the RTL error offset and the next the GSM base stations proper. 
 
-This script makes start.sh.
+Note: This script creates start.sh used below.
 
-If you want to use networked or multiple receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
+Note: A "gain" value of 40 in survey.sh worked best for me, you may need to change this. With this value, rx power as indicated by the output file scan.txt needed to be greater than 200000 for consistent decoding, you may need to edit "power_threshold" in survey.sh to reflect your environment as well.
 
 ```console
 bash ./survey.sh
@@ -43,26 +43,26 @@ bash ./survey.sh
 
 ## Scan
 
-to start (--args are optional and for a networked receiver):
+Note: If you want to use networked or multiple receivers edit start.sh and add --args=rtl_tcp=a.b.c.d:1234 etc as appropriate. 
+
+To start collecting IMSIs (will be put into imsi.csv):
 
 ```console
 sudo bash ./start.sh
 ```
 
-to stop:
+To stop collecting press Control-C then:
 
 ```console
 sudo bash ./stop.sh
 ```
 
-## Results
+## Processing
+
+Run the following to anoymise the IMSI data collected and produce visualisations like the examples below:
 
 ```console
-python3 imsi.py imsi.csv mcc-mnc.db > salted-and-hashed-records.csv
-
-rm imsi.csv
-
-python3 ./visualise.py salted-and-hashed-records.csv
+bash ./process.sh
 ```
 
 ![!](./mcccount.png "")
