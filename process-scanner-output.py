@@ -11,11 +11,6 @@ with open(sys.argv[1]) as kal_input:
     except ValueError:
         print("ppm must be an integer when running " + sys.argv[0] + " ,see README")
         raise SystemExit
-
-    try:
-        rtl_optional_args = sys.argv[3]
-    except:
-        rtl_optional_args = ""
     
     print("#!/bin/bash")
     print("")
@@ -41,10 +36,10 @@ with open(sys.argv[1]) as kal_input:
     average_ppm_offset = 0.
     valid_stations = 0
     for line in kal_input:
-        if "ARFCN:" in line:
-            frequency=line.split(",")[1][7:]
+        if "chan:" in line:
+            frequency=line.split("(")[1][0:8]
             print("echo 'Processing " + frequency + "'")            
-            print(" grgsm_livemon_headless -p " + ppm + " " + rtl_optional_args + " -g 40 -s 2000000 -f " 
+            print(" grgsm_livemon_headless -p " + ppm + " -g 40 -s 2000000 -f " 
                                 + frequency + " > /dev/null 2>&1 < /dev/null &")
             print(" sleep 300")
             print(" pkill -f grgsm_livemon_headless")
