@@ -10,7 +10,7 @@ A post-processing script is provided for that purpose.
 
 ## Dependancies
 
-GnuRadio 3.8 onlu
+[GnuRadio 3.8](https://wiki.gnuradio.org/index.php/InstallingGR)
 
 [rtl_sdr](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
 
