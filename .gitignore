@@ -1,2 +1,10 @@
 mcc-mnc.csv
 venv
+ToDo
+scan.txt
+ppm.txt
+imsi.csv
+.vscode/launch.json
+start.sh
+mcc-mnc.db
+salted-and-hashed-records.csv

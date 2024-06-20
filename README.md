@@ -8,35 +8,47 @@ Be a good citizen and always properly anonymise and/or delete any [Personally Id
 
 A post-processing script is provided for that purpose.
 
-## Dependancies
+## Install dependancies
 
-[GnuRadio 3.8](https://wiki.gnuradio.org/index.php/InstallingGR)
+Tested on Ubuntu 22.04 64bit.
 
-[rtl_sdr](https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/)
+``` console
+apt-get install git gnuradio rtl_sdr git cmake libosmocore-dev gr-osmosdr tshark wireshark
 
-[gr-gsm](https://osmocom.org/projects/gr-gsm/wiki/Installation)
+pip3 install python-dateutil pandas matplotlib
 
-[mcc-mnc table](https://raw.githubusercontent.com/musalbas/mcc-mnc-table/master/mcc-mnc-table.csv)
+git clone https://github.com/bkerler/gr-gsm
+cd gr-gsm
+mkdir build
+cd build
+cmake ..
+mkdir $HOME/.grc_gnuradio/ $HOME/.gnuradio/
+make
+sudo make install
+sudo ldconfig
 
-[python3-matplotlib](https://matplotlib.org/stable/faq/installing_faq.html)
+sudo apt-get install libtool libfftw3-dev librtlsdr-dev
+git clone https://github.com/steve-m/kalibrate-rtl.git
+cd kalibrate-rtl
+./bootstrap
+CXXFLAGS='-W -Wall -O3' ./configure
+make
+sudo make install
 
-[python3-pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
+```
 
-[tshark](https://tshark.dev/setup/install/)
-
-[kalibrate-rtl](https://github.com/steve-m/kalibrate-rtl) : [RaspberryPi instructions](https://pysselilivet.blogspot.com/2019/08/sdr-calibrate-with-kalibrate-rtl.html)
-
-## Setup
+## Setup (do this in directory you installed GSMRuStillThere)
 
 ```console
-python3 make-mcc-mnc-db.py mcc-mnc-table.csv mcc-mnc.db
+wget https://s3.amazonaws.com/mcc-mnc.net/mcc-mnc.csv
+python3 make-mcc-mnc-db.py mcc-mnc.csv mcc-mnc.db
 ```
 
 ## Survey
 
 Two scans are made, the first to get an accurate RTL error offset and the next the GSM base stations proper. 
 
-This script then creates *start.sh* to allow capture of IMSI data.
+This script then creates **start.sh** to allow capture of IMSI data.
 
 ```console
 bash ./survey.sh
@@ -52,6 +64,12 @@ sudo bash ./start.sh
 ```
 
 Note for advanced users: If you want to use a networked or specific USB RTL SDR receiver other than the default one edit *start.sh* and add **--args=rtl_tcp=a.b.c.d:1234** etc to the **grgsm_livemon_headless** command lines as appropriate.
+
+To live view signalling in wireshark use:
+
+``` console
+sudo wireshark -k -f udp -Y gsmtap -i lo
+```
 
 To stop collecting press Control-C then:
 

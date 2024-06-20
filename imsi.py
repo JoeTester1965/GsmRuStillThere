@@ -35,12 +35,12 @@ def main():
                         msin = hashlib.sha256(row[0][5:].encode('utf-8') + salt).hexdigest()[-10:]
                         datetime = parse(timestamp)
                         cursor = conn.cursor()
-                        cursor.execute('select distinct country,network from mccmnc where mcc=? and mnc=?', (mcc, mnc))
+                        cursor.execute('select distinct country,operator from mccmnc where mcc=? and mnc=?', (mcc, mnc))
                         records=cursor.fetchall()
                         if len(records) > 0:
                             country=records[0][0]
-                            network=records[0][1]
-                            print(f'{datetime},{msin},{mcc},{mnc},{country},{network}')
+                            operator=records[0][1]
+                            print(f'{datetime},{msin},{mcc},{mnc},{country},{operator}')
                         line_count += 1
                     except:
                         pass
