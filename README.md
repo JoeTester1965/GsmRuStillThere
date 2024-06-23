@@ -13,7 +13,7 @@ A post-processing script is provided for that purpose.
 Tested on Ubuntu 22.04 64bit.
 
 ``` console
-apt-get install git gnuradio rtl_sdr git cmake libosmocore-dev gr-osmosdr tshark wireshark
+apt-get install git gnuradio rtl-sdr git cmake libosmocore-dev gr-osmosdr tshark wireshark
 
 pip3 install python-dateutil pandas matplotlib
 
