@@ -65,9 +65,10 @@ sudo bash ./start.sh
 
 Note for advanced users: If you want to use a networked or specific USB RTL SDR receiver other than the default one edit *start.sh* and add **--args=rtl_tcp=a.b.c.d:1234** etc to the **grgsm_livemon_headless** command lines as appropriate.
 
-To live view signalling in wireshark use:
+To live view signalling in tshark or wireshark, use:
 
 ``` console
+sudo tshark -i lo -Y gsmtap
 sudo wireshark -k -f udp -Y gsmtap -i lo
 ```
 
