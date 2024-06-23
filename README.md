@@ -10,7 +10,7 @@ A post-processing script is provided for that purpose.
 
 ## Install dependancies
 
-Tested on Ubuntu 22.04 64bit.
+Tested on Ubuntu 22.04 64bit and Raspberry Pi Debian version: 12 (bookworm) 64bit.
 
 ``` console
 apt-get install git gnuradio rtl-sdr git cmake libosmocore-dev gr-osmosdr tshark wireshark
