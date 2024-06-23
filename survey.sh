@@ -11,3 +11,5 @@ ppm=`tail -n 1 ppm.txt | cut -c 25- | sed 's/.\{4\}$//'`
 echo $ppm
 kal -g $gain -s 900 -e $ppm > scan.txt
 python3 ./process-scanner-output.py scan.txt $ppm $power_threshold > start.sh
+chmod u+x start.sh
+chmod u+x stop.sh
