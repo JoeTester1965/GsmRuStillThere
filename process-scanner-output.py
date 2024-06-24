@@ -16,9 +16,6 @@ with open(sys.argv[1]) as kal_input:
     print("fi")
     print("")
 
-    print("bash ./stop.sh")
-    print("")
-
     print("rm -f imsi.csv")
     print("")
 
