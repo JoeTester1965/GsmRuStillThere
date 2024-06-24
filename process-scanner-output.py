@@ -26,11 +26,11 @@ with open(sys.argv[1]) as kal_input:
     print("sleep 1 ")
     print("pkill -f grgsm_livemon_headless")
     print("pkill -f tshark")
+    print("sudo stdbuf -i0 -o0 -e0 tshark -i lo -Y e212.imsi -T fields -e e212.imsi -e frame.time -E separator=, -E quote=d -E occurrence=f >> imsi.csv 2>/dev/null &")
     print("")
 
     print("while [ 1 ]")
     print("do")
-    print("sudo stdbuf -i0 -o0 -e0 tshark -i lo -Y e212.imsi -T fields -e e212.imsi -e frame.time -E separator=, -E quote=d -E occurrence=f >> imsi.csv 2>/dev/null &")
     average_ppm_offset = 0.
     valid_stations = 0
     for line in kal_input:
