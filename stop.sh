@@ -7,3 +7,4 @@ fi
 
 pkill -f grgsm_livemon_headless
 pkill -f tshark
+pkill -f start.sh
