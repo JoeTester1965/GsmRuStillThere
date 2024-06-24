@@ -5,6 +5,6 @@ echo 'Not running as root'
 exit
 fi
 
-pkill -f grgsm_livemon_headless
+pkill -f -9 grgsm_livemon_headless
 pkill -f tshark
 pkill -f start.sh
