@@ -5,6 +5,7 @@ import hashlib
 import uuid
 from dateutil.parser import parse
 from sqlite3 import Error
+import logging
 
 def create_connection(db_file):
     try:
@@ -16,6 +17,9 @@ def create_connection(db_file):
 
 filename_csv=sys.argv[1]
 filename_database=sys.argv[2]
+
+logging.basicConfig(format='%(message)s')
+log = logging.getLogger(__name__)
 
 def main():
     salt = uuid.uuid4().hex.encode('utf-8')
@@ -41,6 +45,8 @@ def main():
                             country=records[0][0]
                             operator=records[0][1]
                             print(f'{datetime},{msin},{mcc},{mnc},{country},{operator}')
+                        else:
+                            log.warning('mcc:mnc %s:%s had no match in database!', mcc,mnc)
                         line_count += 1
                     except:
                         pass
