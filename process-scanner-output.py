@@ -19,11 +19,13 @@ with open(sys.argv[1]) as kal_input:
     print("rm -f imsi.csv")
     print("")
 
-    print("echo 'Control-C to stop looping round GSM channels'")
+    print("echo 'Run sudo bash ./stop.sh root to stop collection'")
     print("sleep 1 ")
-    print("pkill -f grgsm_livemon_headless")
-    print("pkill -f tshark")
-    print("sudo stdbuf -i0 -o0 -e0 tshark -i lo -Y e212.imsi -T fields -e e212.imsi -e frame.time -E separator=, -E quote=d -E occurrence=f >> imsi.csv 2>/dev/null &")
+    print("nohup pkill -f grgsm_livemon_headless &> /dev/null")
+    print("nohup pkill -f -9 grgsm_livemon_headless &> /dev/null")
+    print("nohup pkill -f tshark &> /dev/null")
+
+    print("sudo nohup stdbuf -i0 -o0 -e0 tshark -i lo -Y e212.imsi -T fields -e e212.imsi -e frame.time -E separator=, -E quote=d -E occurrence=f >> imsi.csv 2>/dev/null &")
     print("")
 
     print("while [ 1 ]")
@@ -39,6 +41,7 @@ with open(sys.argv[1]) as kal_input:
                 print(" grgsm_livemon_headless -p " + ppm + " -g 40 -s 2000000 -f " 
                                     + frequency + " > /dev/null 2>&1 < /dev/null &")
                 print(" sleep 600")
-                print(" pkill -f grgsm_livemon_headless")
+                print("nohup pkill -f grgsm_livemon_headless &> /dev/null")
+                print("nohup pkill -f -9 grgsm_livemon_headless &> /dev/null")
 
     print("done")

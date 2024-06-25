@@ -34,13 +34,13 @@ cd kalibrate-rtl
 CXXFLAGS='-W -Wall -O3' ./configure
 make
 sudo make install
-
 ```
 
 ## Setup (do this in directory you installed GSMRuStillThere)
 
 ```console
 wget https://s3.amazonaws.com/mcc-mnc.net/mcc-mnc.csv
+
 python3 make-mcc-mnc-db.py mcc-mnc.csv mcc-mnc.db
 ```
 
@@ -60,7 +60,7 @@ Note: A **gain** value of **40** in *survey.sh* worked best for me, you may need
 This script loops through all found base stations gathering IMSI data from each one for 5 minutes into *imsi.csv*. Root user is needed for tshark hence sudo. 
 
 ```console
-sudo bash ./start.sh
+sudo bash ./start.sh &> /dev/null &
 ```
 
 Note for advanced users: If you want to use a networked or specific USB RTL SDR receiver other than the default one edit *start.sh* and add **--args=rtl_tcp=a.b.c.d:1234** etc to the **grgsm_livemon_headless** command lines as appropriate.
@@ -72,7 +72,7 @@ sudo tshark -i lo -Y gsmtap
 sudo wireshark -k -f udp -Y gsmtap -i lo
 ```
 
-To stop collecting press Control-C then:
+To stop collecting:
 
 ```console
 sudo bash ./stop.sh
