@@ -15,6 +15,10 @@ Tested on Ubuntu 22.04 64bit and Raspberry Pi Debian version: 12 (bookworm) 64bi
 ``` console
 apt-get install git gnuradio rtl-sdr git cmake libosmocore-dev gr-osmosdr tshark wireshark
 
+python3 -m venv venv
+
+source venv/bin/activate
+
 pip3 install python-dateutil pandas matplotlib
 
 git clone https://github.com/bkerler/gr-gsm
