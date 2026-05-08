@@ -9,3 +9,4 @@ start.sh
 mcc-mnc.db
 salted-and-hashed-records.csv
 nohup.out
+keepstart.sh
